@@ -1,0 +1,4 @@
+repository "Gbit_Game@devigel@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
