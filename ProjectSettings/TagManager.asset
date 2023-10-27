@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Platform
+  - Weapon
+  - SceneTrigger
+  - Interaction_Skill_Sprint
+  - Interaction_Skill_Climb
+  - Interaction_Skill_Jump
+  - DestructiblePlatform
   layers:
   - Default
   - TransparentFX
@@ -11,10 +18,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Invincible
+  - Player
+  - Wall
   - 
   - 
   - 
