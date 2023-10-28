@@ -10,19 +10,36 @@ public class Portal : MonoBehaviour
     [SerializeField] public Transform target;
     private PlayerController playerController;
     private bool canTeleport = false;
+    private Animator _animator;
+    private bool IsPlaying = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (IsPlaying)
+        {
+            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
+            
+            if (info.normalizedTime >= 1.0f)
+            {
+                IsPlaying = false;
+                playerController.setTransform(target);
+            }
+                 
+        }
+        
         if (canTeleport && playerController != null && playerController.Interaction)
         {
-            playerController.setTransform(target);
+
+            _animator.Play("teleport", 0, 0f);
+            IsPlaying = true;
+
         }
     }
 
