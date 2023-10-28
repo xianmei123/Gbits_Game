@@ -11,6 +11,7 @@ TagManager:
   - Interaction_Skill_Climb
   - Interaction_Skill_Jump
   - DestructiblePlatform
+  - Interaction_Skill_ClimbLadder
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Invincible
   - Player
   - Wall
-  - 
+  - Ladder
   - 
   - 
   - 

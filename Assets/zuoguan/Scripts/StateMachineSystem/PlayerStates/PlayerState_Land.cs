@@ -9,7 +9,8 @@ public class PlayerState_Land : PlayerState
     public override void Enter()
     {
         base.Enter();
-     
+        
+        // Debug.Log(player.MoveSpeedY);
         if (player.MoveSpeedY < -10.0f)
         {
             player.InPlatform();

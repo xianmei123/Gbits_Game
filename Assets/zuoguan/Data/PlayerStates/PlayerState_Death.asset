@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56dbbcdc3fbfcb4ab61c7b434cf3b29, type: 3}
   m_Name: PlayerState_Death
   m_EditorClassIdentifier: 
-  stateName: Death
+  stateName: death
   transitionDuration: 0.1

@@ -1,9 +1,9 @@
-
 using UnityEngine;
-[CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Climb", fileName = "PlayerState_Climb")]
-public class PlayerState_Climb : PlayerState
+[CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/ClimbLadder", fileName = "PlayerState_ClimbLadder")]
+public class PlayerState_ClimbLadder : PlayerState
 {
-  
+
+    private float speed = 3.0f;
     public override void Enter()
     {
         base.Enter();
@@ -37,7 +37,7 @@ public class PlayerState_Climb : PlayerState
 
     public override void PhysicUpdate()
     {
-        player.SetVelocityX(0);
+        player.MoveInLadder(speed);
        
     }
 

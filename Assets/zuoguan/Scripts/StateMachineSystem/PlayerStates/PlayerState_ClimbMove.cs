@@ -1,9 +1,8 @@
-
 using UnityEngine;
-[CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Climb", fileName = "PlayerState_Climb")]
-public class PlayerState_Climb : PlayerState
+[CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/ClimbMove", fileName = "PlayerState_ClimbMove")]
+public class PlayerState_ClimbMove : PlayerState
 {
-  
+    [SerializeField] float climbSpeed = 5f;
     public override void Enter()
     {
         base.Enter();
@@ -20,25 +19,34 @@ public class PlayerState_Climb : PlayerState
             stateMachine.SwitchState(typeof(PlayerState_Death));
             return;
         }
-       
+        // if (input.StopJump || player.IsFalling)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_Fall));
+        // }
+        //
+        // if (input.Sprint)
+        // {
+        //     if (player.canFlySprint)
+        //     {
+        //         stateMachine.SwitchState(typeof(PlayerState_FlySprint));
+        //     }
+        // }
         if (input.Move && input.AxisX * player.transform.localScale.x < 0)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
         
-        else if (input.MoveUpDown)
+        if (input.Jump && player.HaveSkill("Jump"))
         {
-            stateMachine.SwitchState(typeof(PlayerState_ClimbMove));
+            stateMachine.SwitchState(typeof(PlayerState_JumpUp));
         }
-        
-        
         
     }
 
     public override void PhysicUpdate()
     {
         player.SetVelocityX(0);
-       
+        player.MoveUpDown(climbSpeed);
     }
 
     public override void Exit()

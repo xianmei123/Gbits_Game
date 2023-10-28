@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c98a809a2b9db743b14eee262142777, type: 3}
   m_Name: PlayerState_Fall
   m_EditorClassIdentifier: 
-  stateName: Fall
+  stateName: fall
   transitionDuration: 0.1
   speedCurve:
     serializedVersion: 2

@@ -18,8 +18,8 @@ public class PlayerState : ScriptableObject, IState
     protected PlayerInput input;
     protected PlayerStateMachine stateMachine;
 
-    protected bool IsAnimationFinished => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
-    // protected bool IsAnimationFinished => StateDuration >= 0;
+    // protected bool IsAnimationFinished => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
+    protected bool IsAnimationFinished => StateDuration >= 0.5;
 
     protected float StateDuration => Time.time - stateStartTime;
 

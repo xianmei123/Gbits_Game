@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada96f3a2fd909641a36eed703d97e8b, type: 3}
   m_Name: PlayerState_Climb
   m_EditorClassIdentifier: 
-  stateName: Climb
+  stateName: climb
   transitionDuration: 0.1

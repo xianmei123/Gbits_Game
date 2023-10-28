@@ -8,6 +8,7 @@ public class PlayerState_Fall : PlayerState
 
     public override void LogicUpdate()
     {
+        // Debug.Log(player.MoveSpeedY);
         if (player.PlayerDeath())
         {
             stateMachine.SwitchState(typeof(PlayerState_Death));
@@ -39,7 +40,7 @@ public class PlayerState_Fall : PlayerState
 
     public override void PhysicUpdate()
     {
-        player.Move(moveSpeed);
+        player.JumpMove(moveSpeed);
         player.SetVelocityY(speedCurve.Evaluate(StateDuration));
     }
 }

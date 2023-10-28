@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private Collider2D otherCollider;
 
-    private CapsuleCollider2D playerCollider;
-    private bool canInteraction = false;
+    private BoxCollider2D playerCollider;
+    public bool canInteraction = false;
 
     private bool isAttacking = false;
 
@@ -42,7 +42,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 InitialPos;
 
     public bool CanClimb => ClimbDetector.CanClimb;
-    public bool IsGrounded => groundDetector.IsGrounded;
+    // public bool IsGrounded => groundDetector.IsGrounded;
+    
+    public bool IsGrounded = true;
+    
+    public bool Grounded => groundDetector.IsGrounded;
     public bool IsFalling => rigidBody.velocity.y < 0f && !IsGrounded;
 
     public float MoveSpeedX => Mathf.Abs(rigidBody.velocity.x);
@@ -63,8 +67,30 @@ public class PlayerController : MonoBehaviour
     private bool IsDeath = false;
 
     public Vector2 distance;
-
+    [SerializeField]
+    private LayerMask LadderLayer;
+    [SerializeField]
+    private LayerMask GroundLayer;
+    [SerializeField]
+    private PhysicsMaterial2D noFriction;
+    [SerializeField]
+    private PhysicsMaterial2D fullFriction;
+    private float slopeDownAngle;
+    private float slopeSideAngle;
+    private float lastSlopeAngle;
+    private Vector2 colliderSize;
+    private bool isOnSlope;
+    [SerializeField]
+    private float slopeCheckDistance = 0.5f;
+    private float maxSlopeAngle = 70;
+    private bool canWalkOnSlope;
+    private Vector2 slopeNormalPerp;
     
+    
+    [SerializeField]
+    private Transform groundCheck;
+    [SerializeField]
+    private float groundCheckRadius;
 
     private void Awake()
     {
@@ -78,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
         rigidBody = GetComponent<Rigidbody2D>();
         VoicePlayer = GetComponentInChildren<AudioSource>();
-        playerCollider = GetComponent<CapsuleCollider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
         gameObject.layer = LayerMask.NameToLayer("Player");
 
 
@@ -86,7 +112,8 @@ public class PlayerController : MonoBehaviour
         skills.Add("Jump", false);
         skills.Add("Climb", false);
         skills.Add("Sprint", false);
-        
+        skills.Add("Climb_Ladder", false);
+        colliderSize = playerCollider.size;
     }
 
 
@@ -110,11 +137,12 @@ public class PlayerController : MonoBehaviour
             canSprint = true;
         }
         
-        // Debug.Log(HaveSkill("Sprint") + " " + HaveSkill("Climb") + " " + HaveSkill("Jump"));
+        // Debug.Log(HaveSkill("Sprint") + " " + HaveSkill("Climb") + " " + HaveSkill("Jump") + HaveSkill("Climb_Ladder"));
 
 
         if (input.Interaction && skillType > 0)
         {
+            canInteraction = true;
             switch (skillType)
             {
                 case 1:
@@ -129,6 +157,10 @@ public class PlayerController : MonoBehaviour
                     GetSkill("Jump");
                   
                     break;
+                case 4:
+                    GetSkill("Climb_Ladder");
+                  
+                    break;
             }
             
         }
@@ -137,10 +169,18 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (InMovingPlatform)
-        {
-            transform.Translate(distance);
-        }
+        // if (InMovingPlatform)
+        // {
+        //     transform.Translate(distance);
+        // }
+        CheckGround();
+        SlopeCheck();
+    }
+
+    private void CheckGround()
+    {
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position + new Vector3(transform.localScale.x * 0.35f, 0f, 0), groundCheckRadius, GroundLayer);
+       
     }
 
     public void GetSkill(string skillName)
@@ -163,11 +203,33 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float speed)
     {
+        
+        
         if (input.Move)
         {
             transform.localScale = new Vector3(input.AxisX, 1f, 1f);
         }
+        // Debug.Log(IsGrounded + " " + isOnSlope + " " + canWalkOnSlope + " " + HaveSkill("Climb_Ladder"));
+        if (IsGrounded && isOnSlope && canWalkOnSlope && HaveSkill("Climb_Ladder"))
+        {
+            // Debug.Log("yes");
+            SetVelocity(new Vector3(speed * slopeNormalPerp.x * -input.AxisX, speed * slopeNormalPerp.y * -input.AxisX));
+        }
+        else if (Grounded)
+        {
+            SetVelocityX(speed * input.AxisX);
+        }
 
+        // SetVelocityX(speed * input.AxisX);
+    }
+    
+    public void JumpMove(float speed)
+    {
+
+        if (input.Move)
+        {
+            transform.localScale = new Vector3(input.AxisX, 1f, 1f);
+        }
         SetVelocityX(speed * input.AxisX);
     }
     
@@ -285,6 +347,11 @@ public class PlayerController : MonoBehaviour
            
             skillType = 3;
         }
+        else if (other.transform.CompareTag("Interaction_Skill_ClimbLadder"))
+        {
+           
+            skillType = 4;
+        }
   
     }
 
@@ -298,10 +365,106 @@ public class PlayerController : MonoBehaviour
     }
 
 
- 
+    
 
     public bool HaveSkill(string skillName)
     {
         return skills[skillName];
     }
+    
+    public void IsInLadder(float speed)
+    {
+        
+    }
+
+    public void MoveInLadder(float speed)
+    {
+        
+    }
+    
+    private void SlopeCheck()
+    {
+        Vector2 checkPos = transform.position - (Vector3)(new Vector2(0.0f, colliderSize.y / 2));
+
+        SlopeCheckHorizontal(checkPos);
+        SlopeCheckVertical(checkPos);
+    }
+
+    private void SlopeCheckHorizontal(Vector2 checkPos)
+    {
+        RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, transform.right, slopeCheckDistance, LadderLayer);
+        RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, slopeCheckDistance, LadderLayer);
+        Debug.DrawLine(checkPos, (Vector3)checkPos +  (Vector3)transform.right * slopeCheckDistance, Color.blue);
+        if (slopeHitFront)
+        {
+            isOnSlope = true;
+
+            slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
+
+        }
+        else if (slopeHitBack)
+        {
+            isOnSlope = true;
+
+            slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
+        }
+        else
+        {
+            slopeSideAngle = 0.0f;
+            isOnSlope = false;
+        }
+        // Debug.Log("h:" + slopeSideAngle + isOnSlope);
+    }
+
+    private void SlopeCheckVertical(Vector2 checkPos)
+    {      
+        RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, LadderLayer);
+
+        if (hit)
+        {
+
+            slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;            
+
+            slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
+
+            if(slopeDownAngle != lastSlopeAngle)
+            {
+                isOnSlope = true;
+            }                       
+
+            lastSlopeAngle = slopeDownAngle;
+           
+            Debug.DrawRay(hit.point, slopeNormalPerp, Color.blue);
+            Debug.DrawRay(hit.point, hit.normal, Color.green);
+
+        }
+
+        if (slopeDownAngle > maxSlopeAngle || slopeSideAngle > maxSlopeAngle)
+        {
+            canWalkOnSlope = false;
+        }
+        else
+        {
+            canWalkOnSlope = true;
+        }
+
+        if (isOnSlope && canWalkOnSlope && !input.Move)
+        {
+            rigidBody.sharedMaterial = fullFriction;
+            playerCollider.sharedMaterial = fullFriction;
+        }
+        else
+        {
+            rigidBody.sharedMaterial = noFriction;
+            playerCollider.sharedMaterial = noFriction;
+        }
+        
+        // Debug.Log("v:" + slopeDownAngle + isOnSlope);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position + new Vector3(transform.localScale.x * 0.35f, 0f, 0), groundCheckRadius);
+    }
+
 }

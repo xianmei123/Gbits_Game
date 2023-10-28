@@ -40,6 +40,10 @@ public class PlayerState_Idle : PlayerState
             stateMachine.SwitchState(typeof(PlayerState_Climb));
             return;
         }
+        else if (player.canInteraction)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Absorb));
+        }
         // else if (input.Squat)
         // {
         //     stateMachine.SwitchState(typeof(PlayerState_Squat));
@@ -57,6 +61,10 @@ public class PlayerState_Idle : PlayerState
     {
       
         player.SetVelocityX(currentSpeed * player.transform.localScale.x);
+        // if (player.MoveSpeedY > 0)
+        // {
+        //     player.SetVelocityY(0);
+        // }
         
     }
 }

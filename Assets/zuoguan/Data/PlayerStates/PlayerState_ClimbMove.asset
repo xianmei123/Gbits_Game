@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f015f74e3d90c94418bb72cfb903bee8, type: 3}
-  m_Name: PlayerState_CoyoteTime
+  m_Script: {fileID: 11500000, guid: 90715d62b0f231748aac03f4857037b1, type: 3}
+  m_Name: PlayerState_ClimbMove
   m_EditorClassIdentifier: 
-  stateName: run
+  stateName: climbMove
   transitionDuration: 0.1
-  coyoteTime: 0.1
-  runSpeed: 5
+  climbSpeed: 5

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5381edb524744014a94d419bf431dc00, type: 3}
   m_Name: PlayerState_FlySprint
   m_EditorClassIdentifier: 
-  stateName: Sprint
+  stateName: sprint
   transitionDuration: 0.1
-  SprintTime: 0.27
-  SprintDistance: 3.2
+  SprintTime: 0.4
+  SprintDistance: 5
   imageDistance: 0.4

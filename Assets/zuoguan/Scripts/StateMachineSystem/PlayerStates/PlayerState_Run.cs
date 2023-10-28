@@ -39,7 +39,7 @@ public class PlayerState_Run : PlayerState
             }
             
         }
-        else if (!player.IsGrounded)
+        else if (!player.Grounded)
         {
             stateMachine.SwitchState(typeof(PlayerState_CoyoteTime));
         } 
@@ -47,6 +47,10 @@ public class PlayerState_Run : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Climb));
             return;
+        }
+        else if (player.canInteraction)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Absorb));
         }
 
 

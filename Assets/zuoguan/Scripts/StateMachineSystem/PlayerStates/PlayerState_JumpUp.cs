@@ -39,7 +39,7 @@ public class PlayerState_JumpUp : PlayerState
 
     public override void PhysicUpdate()
     {
-        player.Move(moveSpeed);
+        player.JumpMove(moveSpeed);
     }
 
     public override void Exit()

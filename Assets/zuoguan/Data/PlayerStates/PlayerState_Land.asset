@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72489b4559f71e440bf0def43f55415b, type: 3}
   m_Name: PlayerState_Land
   m_EditorClassIdentifier: 
-  stateName: Land
+  stateName: land
   transitionDuration: 0.1
   stiffTime: 0.05
   landVFX: {fileID: 0}
