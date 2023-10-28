@@ -39,7 +39,7 @@ public class PlayerState_Run : PlayerState
             }
             
         }
-        else if (!player.Grounded)
+        else if (!player.Grounded && !player.isOnSlope)
         {
             stateMachine.SwitchState(typeof(PlayerState_CoyoteTime));
         } 

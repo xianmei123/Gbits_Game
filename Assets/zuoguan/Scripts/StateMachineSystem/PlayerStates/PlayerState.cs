@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +9,11 @@ public class PlayerState : ScriptableObject, IState
 
     float stateStartTime;
 
-    int stateHash;
-
+    // List<int> stateHashs;
+    //
+    // int stateHash;
+    Dictionary<string, List<int>> stateHashs = new Dictionary<string, List<int>>();
+    
     protected float currentSpeed;
 
     protected Animator animator;
@@ -25,7 +29,23 @@ public class PlayerState : ScriptableObject, IState
 
     void OnEnable()
     {
-        stateHash = Animator.StringToHash(stateName);
+        if (stateHashs.ContainsKey(stateName))
+        {
+            return;
+        }
+        List<int> stateHashList = new List<int>();
+        for (int i = 1; i <= 5; i++)
+        {
+            stateHashList.Add(Animator.StringToHash(stateName + i));
+            Debug.Log(stateName + i + " " + Animator.StringToHash(stateName + i));
+        }
+
+        stateHashs[stateName] = stateHashList;
+        Debug.Log("size" + stateHashs.Count);
+        foreach (var key in stateHashs.Keys)
+        {
+            Debug.Log(key + " keysize " + stateHashs[key].Count);
+        }
     }
 
     public void Initialize(Animator animator, PlayerController player, PlayerInput input, PlayerStateMachine stateMachine)
@@ -38,7 +58,12 @@ public class PlayerState : ScriptableObject, IState
 
     public virtual void Enter()
     {
-        animator.CrossFade(stateHash, transitionDuration);
+        foreach (var key in stateHashs.Keys)
+        {
+            Debug.Log(key + " keysize " + stateHashs[key].Count);
+        }
+        Debug.Log(stateHashs[stateName][player.type - 1] + " " + player.type + " " + stateHashs.Count);
+        animator.CrossFade(stateHashs[stateName][player.type - 1], transitionDuration);
         stateStartTime = Time.time;
     }
 

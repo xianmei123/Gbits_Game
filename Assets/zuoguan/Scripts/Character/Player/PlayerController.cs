@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     private float slopeSideAngle;
     private float lastSlopeAngle;
     private Vector2 colliderSize;
-    private bool isOnSlope;
+    public bool isOnSlope;
     [SerializeField]
     private float slopeCheckDistance = 0.5f;
     private float maxSlopeAngle = 70;
@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
     private Transform groundCheck;
     [SerializeField]
     private float groundCheckRadius;
+
+    public int type = 5;
 
     private void Awake()
     {
@@ -133,6 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Debug.Log(type);
         if (sprintTime < SprintCD)
         {
             sprintTime += Time.deltaTime;
@@ -156,19 +159,19 @@ public class PlayerController : MonoBehaviour
             {
                 case 1:
                     GetSkill("Sprint");
-                    
+                    type = 1;
                     break;
                 case 2:
                     GetSkill("Climb");
-                  
+                    type = 2;
                     break;
                 case 3:
                     GetSkill("Jump");
-                  
+                    type = 3;
                     break;
                 case 4:
                     GetSkill("Climb_Ladder");
-                  
+                    type = 4;
                     break;
             }
 
@@ -193,7 +196,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGround()
     {
-        IsGrounded = Physics2D.OverlapCircle(groundCheck.position + new Vector3(transform.localScale.x * 0.35f, 0f, 0), groundCheckRadius, GroundLayer);
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position + new Vector3(transform.localScale.x * 0.44f, 0f, 0), groundCheckRadius, GroundLayer);
        
     }
 
@@ -387,6 +390,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReleaseSkill()
     {
+        type = 5;
         string skillName = "";
         foreach (var item in skills)
         {
@@ -529,7 +533,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(groundCheck.position + new Vector3(transform.localScale.x * 0.35f, 0f, 0), groundCheckRadius);
+        Gizmos.DrawWireSphere(groundCheck.position + new Vector3(transform.localScale.x * 0.44f, 0f, 0), groundCheckRadius);
     }
 
     public void setTransform(Transform target)

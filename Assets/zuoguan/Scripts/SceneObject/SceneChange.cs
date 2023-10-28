@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     [SerializeField] public String LevelName;
-    [SerializeField] public int index;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log("下一关");

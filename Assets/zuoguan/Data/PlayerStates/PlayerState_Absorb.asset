@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0217c37eaba76da478f3f6ace48d4406, type: 3}
   m_Name: PlayerState_Absorb
   m_EditorClassIdentifier: 
-  stateName: absorb
+  stateName: interaction
   transitionDuration: 0.1
