@@ -1049,14 +1049,6 @@ PrefabInstance:
       propertyPath: LadderLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 3358340471002210257, guid: 7a95391de97414a479e3544cb8edb89b, type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 3617673425351470913, guid: 7a95391de97414a479e3544cb8edb89b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3617673425351470913, guid: 7a95391de97414a479e3544cb8edb89b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.64
@@ -1120,10 +1112,6 @@ PrefabInstance:
     - target: {fileID: 3617673426616377542, guid: 7a95391de97414a479e3544cb8edb89b, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863792418632852681, guid: 7a95391de97414a479e3544cb8edb89b, type: 3}
-      propertyPath: detectionRadius
-      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7435870371728254081, guid: 7a95391de97414a479e3544cb8edb89b, type: 3}
       propertyPath: m_Size.x
@@ -1344,10 +1332,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7353684470502749524, guid: 340259b4ab9d7a24bb88ca6a7eb6f9f4, type: 3}
       propertyPath: m_Name
-      value: DestructiblePlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353684470502749524, guid: 340259b4ab9d7a24bb88ca6a7eb6f9f4, type: 3}
-      propertyPath: m_TagString
       value: DestructiblePlatform
       objectReference: {fileID: 0}
     m_RemovedComponents: []

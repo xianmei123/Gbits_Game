@@ -159,19 +159,19 @@ public class PlayerController : MonoBehaviour
             {
                 case 1:
                     GetSkill("Sprint");
-                    type = 1;
+                    type = 4;
                     break;
                 case 2:
                     GetSkill("Climb");
-                    type = 2;
+                    type = 3;
                     break;
                 case 3:
                     GetSkill("Jump");
-                    type = 3;
+                    type = 2;
                     break;
                 case 4:
                     GetSkill("Climb_Ladder");
-                    type = 4;
+                    type = 1;
                     break;
             }
 

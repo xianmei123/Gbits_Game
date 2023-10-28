@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 813629323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 0.184, z: 0}
+  m_LocalPosition: {x: 0.44, y: 0.198, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 3617673425351470914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.528, z: 0}
+  m_LocalPosition: {x: 0, y: -0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,12 +177,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1908399587, guid: c1f9fe49d1249a443ab0c5302a5c2aae, type: 3}
+  m_Sprite: {fileID: -1766310290, guid: d79d838329c6ae24d9bc0a775eeb8b7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.88, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -224,7 +224,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3617673426616377542}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 57c075541231d354b9c7c51a9ff227d5, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -251,14 +251,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0133333, y: 1.0666667}
-    newSize: {x: 1, y: 2}
+    oldSize: {x: 0.88, y: 1.28}
+    newSize: {x: 0.88, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 1.0666667}
+  m_Size: {x: 0.88, y: 1.28}
   m_EdgeRadius: 0
 --- !u!95 &1998420606
 Animator:
@@ -324,8 +324,22 @@ MonoBehaviour:
   canInteraction: 0
   canSprint: 1
   canFlySprint: 1
+  IsGrounded: 1
   InMovingPlatform: 0
   distance: {x: 0, y: 0}
+  LadderLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  noFriction: {fileID: 6200000, guid: 57c075541231d354b9c7c51a9ff227d5, type: 2}
+  fullFriction: {fileID: 6200000, guid: ccecc70c02f2c6b4eb50cb639e0b37b8, type: 2}
+  isOnSlope: 0
+  slopeCheckDistance: 0.5
+  groundCheck: {fileID: 3617673425351470913}
+  groundCheckRadius: 0.05
+  type: 5
 --- !u!114 &4480342768808032759
 MonoBehaviour:
   m_ObjectHideFlags: 0
