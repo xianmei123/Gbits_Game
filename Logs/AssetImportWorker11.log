@@ -1,0 +1,394 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.9f1 (ea401c316338) revision 15351836'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16010 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Unity 2022.3.9f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker11
+-projectPath
+D:/Unity椤圭洰/Gbits_Game/Gbits_Game
+-logFile
+Logs/AssetImportWorker11.log
+-srvPort
+64063
+Successfully changed project path to: D:/Unity椤圭洰/Gbits_Game/Gbits_Game
+D:/Unity椤圭洰/Gbits_Game/Gbits_Game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [43436] Host "[IP] 26.26.26.1 [Port] 0 [Flags] 2 [Guid] 2123996136 [EditorId] 2123996136 [Version] 1048832 [Id] WindowsEditor(7,Sunshine) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [43436] Host "[IP] 26.26.26.1 [Port] 0 [Flags] 2 [Guid] 2123996136 [EditorId] 2123996136 [Version] 1048832 [Id] WindowsEditor(7,Sunshine) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 19 workers.
+Refreshing native plugins compatible for Editor in 6.06 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.9f1 (ea401c316338)
+[Subsystems] Discovering subsystems at path D:/Unity 2022.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Unity椤圭洰/Gbits_Game/Gbits_Game/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4060 Laptop GPU (ID=0x28e0)
+    Vendor:   NVIDIA
+    VRAM:     7971 MB
+    Driver:   31.0.15.3598
+Initialize mono
+Mono path[0] = 'D:/Unity 2022.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity 2022.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Unity 2022.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56684
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unity 2022.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001556 seconds.
+- Loaded All Assemblies, in  0.225 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.159 seconds
+Domain Reload Profiling: 384ms
+	BeginReloadAssembly (73ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (91ms)
+		LoadAssemblies (72ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (90ms)
+			TypeCache.Refresh (89ms)
+				TypeCache.ScanAssembly (81ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (160ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (114ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (75ms)
+			ProcessInitializeOnLoadMethodAttributes (29ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.432 seconds
+Refreshing native plugins compatible for Editor in 1.46 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.514 seconds
+Domain Reload Profiling: 946ms
+	BeginReloadAssembly (96ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (13ms)
+	RebuildCommonClasses (19ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (287ms)
+		LoadAssemblies (186ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (149ms)
+			TypeCache.Refresh (130ms)
+				TypeCache.ScanAssembly (119ms)
+			ScanForSourceGeneratedMonoScriptInfo (15ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (514ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (418ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (41ms)
+			ProcessInitializeOnLoadAttributes (351ms)
+			ProcessInitializeOnLoadMethodAttributes (20ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 1.24 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4725 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 84 unused Assets / (135.9 KB). Loaded Objects now: 5187.
+Memory consumption went from 152.7 MB to 152.6 MB.
+Total: 2.998800 ms (FindLiveObjects: 0.191200 ms CreateObjectMapping: 0.091300 ms MarkObjects: 2.614300 ms  DeleteObjects: 0.101200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 13177.611302 seconds.
+  path: Assets/zuoguan/trunk.png
+  artifactKey: Guid(ddf57a7bfabfa30438c7f5a298cebdcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/trunk.png using Guid(ddf57a7bfabfa30438c7f5a298cebdcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea57cf46fab8d3e6b06f98b586270353') in 0.081366 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 87.207825 seconds.
+  path: Assets/zuoguan/trunk.png
+  artifactKey: Guid(ddf57a7bfabfa30438c7f5a298cebdcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/trunk.png using Guid(ddf57a7bfabfa30438c7f5a298cebdcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a362c19b76f8d4005bbbaaf7e5518750') in 0.008911 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 69.197035 seconds.
+  path: Assets/zuoguan/Animations/Sprites/shizhu/blue/blue-shizhu9.png
+  artifactKey: Guid(9b3a708d0a0e33741969ee595c22d786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/shizhu/blue/blue-shizhu9.png using Guid(9b3a708d0a0e33741969ee595c22d786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32f806a3f713489ad5519a3fa21511fd') in 0.010737 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.022094 seconds.
+  path: Assets/zuoguan/Animations/Sprites/climb/climb2.png
+  artifactKey: Guid(332c9caec66b39244b975adb43746466) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/climb/climb2.png using Guid(332c9caec66b39244b975adb43746466) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e0cf7398e2413943f9408d3b85581b2') in 0.022592 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/zuoguan/Animations/Sprites/climb/climb3.png
+  artifactKey: Guid(4e0bed342268dc344950dbc0e5a0951e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/climb/climb3.png using Guid(4e0bed342268dc344950dbc0e5a0951e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21bb19eed7c2ddc00e04edd4d144f4bd') in 0.017741 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.248116 seconds.
+  path: Assets/zuoguan/Animations/Sprites/climb/climb4.png
+  artifactKey: Guid(c3c1564c3db4db345886a4d7912edde1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/climb/climb4.png using Guid(c3c1564c3db4db345886a4d7912edde1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8e89189a79c66db2b6a197c481779c4') in 0.016425 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.015263 seconds.
+  path: Assets/zuoguan/Animations/Sprites/csm/csm1.png
+  artifactKey: Guid(0bd0889dec543a945824cc90fc49ea66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/csm/csm1.png using Guid(0bd0889dec543a945824cc90fc49ea66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b974a5921447fac34997dcb63976596') in 0.015726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/zuoguan/Animations/Sprites/csm/csm3.png
+  artifactKey: Guid(7eda9d222a683004eabbb8b631d590c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/csm/csm3.png using Guid(7eda9d222a683004eabbb8b631d590c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0880e52aa825b915bc48909afbec19f7') in 0.015046 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.242947 seconds.
+  path: Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu1.png
+  artifactKey: Guid(932bb6249ded2034caadb306b59d64c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu1.png using Guid(932bb6249ded2034caadb306b59d64c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd298b1e6601fb73397f37a49db425bbd') in 0.014499 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu3.png
+  artifactKey: Guid(c0e223d48e2f7d043a407d498b6e65ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu3.png using Guid(c0e223d48e2f7d043a407d498b6e65ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '851e1a34221aa29fa94eb62cd7418ab4') in 0.014318 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.009221 seconds.
+  path: Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu5.png
+  artifactKey: Guid(639fbd9fafbe4784e9e049c080f80f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu5.png using Guid(639fbd9fafbe4784e9e049c080f80f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2d0875dfe1d8d0ed7ba5ec0c6846c04') in 0.013362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.002494 seconds.
+  path: Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu9.png
+  artifactKey: Guid(4abf795f57c03cc45be71dc8988ce525) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/shizhu/green/green-shizhu9.png using Guid(4abf795f57c03cc45be71dc8988ce525) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '581355730e1969d8bdd6e5db26baf207') in 0.007848 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/zuoguan/Animations/Sprites/shizhu/grey-shizhu.png
+  artifactKey: Guid(22705f3fc2f424a4ab3b9de128005a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/shizhu/grey-shizhu.png using Guid(22705f3fc2f424a4ab3b9de128005a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c09d88e9c652d8a5ef30f3b14824dd1') in 0.018597 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.223143 seconds.
+  path: Assets/zuoguan/Animations/Sprites/background/ground.png
+  artifactKey: Guid(9052a72fa8c90a1468d8b5f59d5b34ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/background/ground.png using Guid(9052a72fa8c90a1468d8b5f59d5b34ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e436f4d36349a7ecab58041876c7735e') in 0.016771 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.023916 seconds.
+  path: Assets/zuoguan/Animations/Sprites/idle/idle2.png
+  artifactKey: Guid(ec19dd2b8e19b3b4bb0c3198153c5c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Animations/Sprites/idle/idle2.png using Guid(ec19dd2b8e19b3b4bb0c3198153c5c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87f3463fea07f5df196b0b456d3cd61a') in 0.019872 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 62.831697 seconds.
+  path: Assets/zuoguan/Prefabs/Ladder.prefab
+  artifactKey: Guid(6e2d718657a117b4daf685e4b9d8f877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/Ladder.prefab using Guid(6e2d718657a117b4daf685e4b9d8f877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37310f0679d2c1fa65d84a8117228174') in 0.036384 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 34.653344 seconds.
+  path: ProjectSettings/TagManager.asset
+  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e92f70d88f3ee1b8620f130727ebfcb0') in 0.000705 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 68.169683 seconds.
+  path: Assets/zuoguan/Prefabs/Ladder.prefab
+  artifactKey: Guid(6e2d718657a117b4daf685e4b9d8f877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/Ladder.prefab using Guid(6e2d718657a117b4daf685e4b9d8f877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e281365c8d6e63d96183724da083728') in 0.005737 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 9.677084 seconds.
+  path: Assets/zuoguan/Prefabs/ColorDoor_Blue.prefab
+  artifactKey: Guid(f7774b861a6cf72478155e925589d756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/ColorDoor_Blue.prefab using Guid(f7774b861a6cf72478155e925589d756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86ead49113e4b3dc107c9e34f3b92609') in 0.007662 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/zuoguan/Prefabs/ColorDoor_Yellow.prefab
+  artifactKey: Guid(a74c98a017cac9f4dbd3a0c95ea58324) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/ColorDoor_Yellow.prefab using Guid(a74c98a017cac9f4dbd3a0c95ea58324) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34b4660238e71120f9c18268beed3645') in 0.005984 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/zuoguan/Prefabs/ColorDoor_Red.prefab
+  artifactKey: Guid(d91818b3ba2d2844cbdf18ef3d171470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/ColorDoor_Red.prefab using Guid(d91818b3ba2d2844cbdf18ef3d171470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f1b6a37190dc0d316b28f182f9d5dd0') in 0.005187 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/zuoguan/Prefabs/ColorDoor_Grey.prefab
+  artifactKey: Guid(4cf1e606a1e54d84aa02c21720dd1ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/ColorDoor_Grey.prefab using Guid(4cf1e606a1e54d84aa02c21720dd1ec9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9948649e3eed324219dbdf8f424ee762') in 0.008255 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time since last request: 5.844343 seconds.
+  path: Assets/zuoguan/Prefabs/Player.prefab
+  artifactKey: Guid(7a95391de97414a479e3544cb8edb89b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/Player.prefab using Guid(7a95391de97414a479e3544cb8edb89b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec9d20147f0fb4a40b2521f20baf2b64') in 0.023434 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 297
+========================================================================
+Received Import Request.
+  Time since last request: 5.898317 seconds.
+  path: Assets/zuoguan/Prefabs/teleport1 1.prefab
+  artifactKey: Guid(945244dc66c94b142b80e7c15ea2cc59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/teleport1 1.prefab using Guid(945244dc66c94b142b80e7c15ea2cc59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf8fe5533a3e5c54c05fb899d9a79407') in 0.005740 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 19
+========================================================================
+Received Import Request.
+  Time since last request: 7.256002 seconds.
+  path: Assets/zuoguan/Prefabs/Switch_Bule.prefab
+  artifactKey: Guid(1c7df704a8781b84aac96ecb50e591a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/Switch_Bule.prefab using Guid(1c7df704a8781b84aac96ecb50e591a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '856a122487729201bf080d99aa4c6038') in 0.008213 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 42
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/zuoguan/Prefabs/Switch_Red.prefab
+  artifactKey: Guid(520fffe3305fe604c9de36ed0552a365) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/zuoguan/Prefabs/Switch_Red.prefab using Guid(520fffe3305fe604c9de36ed0552a365) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0412f2c3426321bcc0cc39168ca7e688') in 0.007745 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 42
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: 由于线程退出或应用程序请求，已中止 I/O 操作。
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
