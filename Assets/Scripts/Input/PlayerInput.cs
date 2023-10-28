@@ -15,12 +15,12 @@ public class PlayerInput : MonoBehaviour
     Vector2 axes => playerInputActions.Gameplay.Axes.ReadValue<Vector2>();
 
     public bool HasJumpInputBuffer { get; set; }
-    public bool Jump => playerInputActions.Gameplay.Jump.WasPressedThisFrame();
-    public bool StopJump => playerInputActions.Gameplay.Jump.WasReleasedThisFrame();
+    public bool Jump => playerInputActions.Gameplay.Skill.WasPressedThisFrame();
+    public bool StopJump => playerInputActions.Gameplay.Skill.WasReleasedThisFrame();
     
-    public bool Sprint => playerInputActions.Gameplay.Sprint.WasPressedThisFrame();
+    public bool Sprint => playerInputActions.Gameplay.Skill.WasPressedThisFrame();
     
-    public bool Attack => playerInputActions.Gameplay.Attack.WasPressedThisFrame();
+    public bool Release => playerInputActions.Gameplay.Release.WasPressedThisFrame();
     public bool Interaction => playerInputActions.Gameplay.Interaction.WasPressedThisFrame();
     
     public bool Move => AxisX != 0f;
@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
 
     void OnEnable()
     {
-        playerInputActions.Gameplay.Jump.canceled += delegate
+        playerInputActions.Gameplay.Skill.canceled += delegate
         {
             HasJumpInputBuffer = false;
         };

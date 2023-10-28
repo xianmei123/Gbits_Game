@@ -37,16 +37,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""76a42632-625a-426e-a300-52517b30ab5b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Sprint"",
+                    ""name"": ""Skill"",
                     ""type"": ""Button"",
                     ""id"": ""20c63d94-ee54-4f42-b859-a410493c72fb"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +46,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Release"",
                     ""type"": ""Button"",
                     ""id"": ""4f38783f-42cd-4aa0-81ec-a89ad564d0e5"",
                     ""expectedControlType"": ""Button"",
@@ -186,52 +177,30 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4f73539f-b2c6-45cc-9e1a-ee0b7d74d0e4"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a1f28d21-e776-46dc-9702-31c636d360f4"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""91822424-a7ab-4b11-98f5-9d0a0c8bf45f"",
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sprint"",
+                    ""action"": ""Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""18830ab8-28a3-429f-920a-8f3117ba554f"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Release"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""c2df4676-3bca-4ab3-8046-a1ae2db8aac7"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -247,9 +216,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Axes = m_Gameplay.FindAction("Axes", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-        m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
-        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_Skill = m_Gameplay.FindAction("Skill", throwIfNotFound: true);
+        m_Gameplay_Release = m_Gameplay.FindAction("Release", throwIfNotFound: true);
         m_Gameplay_Interaction = m_Gameplay.FindAction("Interaction", throwIfNotFound: true);
     }
 
@@ -313,18 +281,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Axes;
-    private readonly InputAction m_Gameplay_Jump;
-    private readonly InputAction m_Gameplay_Sprint;
-    private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_Skill;
+    private readonly InputAction m_Gameplay_Release;
     private readonly InputAction m_Gameplay_Interaction;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
         public GameplayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Axes => m_Wrapper.m_Gameplay_Axes;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
-        public InputAction @Sprint => m_Wrapper.m_Gameplay_Sprint;
-        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @Skill => m_Wrapper.m_Gameplay_Skill;
+        public InputAction @Release => m_Wrapper.m_Gameplay_Release;
         public InputAction @Interaction => m_Wrapper.m_Gameplay_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -338,15 +304,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Axes.started += instance.OnAxes;
             @Axes.performed += instance.OnAxes;
             @Axes.canceled += instance.OnAxes;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @Skill.started += instance.OnSkill;
+            @Skill.performed += instance.OnSkill;
+            @Skill.canceled += instance.OnSkill;
+            @Release.started += instance.OnRelease;
+            @Release.performed += instance.OnRelease;
+            @Release.canceled += instance.OnRelease;
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
@@ -357,15 +320,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Axes.started -= instance.OnAxes;
             @Axes.performed -= instance.OnAxes;
             @Axes.canceled -= instance.OnAxes;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @Skill.started -= instance.OnSkill;
+            @Skill.performed -= instance.OnSkill;
+            @Skill.canceled -= instance.OnSkill;
+            @Release.started -= instance.OnRelease;
+            @Release.performed -= instance.OnRelease;
+            @Release.canceled -= instance.OnRelease;
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
@@ -389,9 +349,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnAxes(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnSkill(InputAction.CallbackContext context);
+        void OnRelease(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore;
+using Object = System.Object;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public bool canInteraction = false;
 
     private bool isAttacking = false;
-
+    public bool Interaction => input.Interaction;
+    
     public AudioSource VoicePlayer { get; private set; }
 
     public bool CanAirJump { get; set; }
@@ -65,6 +67,9 @@ public class PlayerController : MonoBehaviour
     private int skillType = 0;
 
     private bool IsDeath = false;
+
+    private GameObject tmpSkill;
+    private bool shouldDestoryTmp = false;
 
     public Vector2 distance;
     [SerializeField]
@@ -139,7 +144,11 @@ public class PlayerController : MonoBehaviour
         
         // Debug.Log(HaveSkill("Sprint") + " " + HaveSkill("Climb") + " " + HaveSkill("Jump") + HaveSkill("Climb_Ladder"));
 
-
+        if (input.Release)
+        {
+            ReleaseSkill();
+        }
+        
         if (input.Interaction && skillType > 0)
         {
             canInteraction = true;
@@ -162,7 +171,12 @@ public class PlayerController : MonoBehaviour
                   
                     break;
             }
-            
+
+            if (shouldDestoryTmp && tmpSkill != null)
+            {
+                Destroy(tmpSkill);
+                shouldDestoryTmp = false;
+            }
         }
     }
 
@@ -352,6 +366,11 @@ public class PlayerController : MonoBehaviour
            
             skillType = 4;
         }
+
+        if (other.name.Equals("tmpSkill"))
+        {
+            shouldDestoryTmp = true;
+        }
   
     }
 
@@ -365,7 +384,53 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    
+
+    public void ReleaseSkill()
+    {
+        string skillName = "";
+        foreach (var item in skills)
+        {
+            if (item.Value)
+            {
+                skillName = item.Key;
+            }
+        }
+
+        if (!skillName.Equals(""))
+        {
+            skills[skillName] = false;
+            GenerateSkill(skillName);
+        }
+            
+    }
+
+    private void GenerateSkill(string skillName)
+    {
+        GameObject obj = GameObject.Instantiate(Resources.Load<GameObject>("Skill"));
+        obj.transform.position = transform.position;
+        obj.name = "tmpSkill";
+        if (tmpSkill != null)
+            Destroy(tmpSkill);
+        tmpSkill = obj;
+        if (skillName.Equals("Sprint"))
+        {
+            obj.tag = "Interaction_Skill_Sprint";
+            
+        }
+        else if (skillName.Equals("Climb"))
+        {
+            obj.tag = "Interaction_Skill_Climb";
+        }
+        else if (skillName.Equals("Jump"))
+        {
+            obj.tag = "Interaction_Skill_Jump";
+        }
+        else if (skillName.Equals("Climb_Ladder"))
+        {
+            obj.tag = "Interaction_Skill_ClimbLadder";
+        }
+    }
+
 
     public bool HaveSkill(string skillName)
     {
@@ -467,4 +532,10 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position + new Vector3(transform.localScale.x * 0.35f, 0f, 0), groundCheckRadius);
     }
 
+    public void setTransform(Transform target)
+    {
+        transform.position = target.position;
+    }
+    
+    
 }
