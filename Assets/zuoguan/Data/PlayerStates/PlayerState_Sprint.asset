@@ -15,5 +15,5 @@ MonoBehaviour:
   stateName: sprint
   transitionDuration: 0.1
   SprintTime: 0.4
-  SprintDistance: 5
+  SprintDistance: 13
   imageDistance: 0.4

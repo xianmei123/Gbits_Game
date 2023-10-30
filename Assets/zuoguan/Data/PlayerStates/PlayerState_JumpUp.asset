@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: jump
   transitionDuration: 0.1
-  jumpForce: 13
+  jumpForce: 15
   moveSpeed: 5
   canSmallJump: 1
   deAcceleration: 3

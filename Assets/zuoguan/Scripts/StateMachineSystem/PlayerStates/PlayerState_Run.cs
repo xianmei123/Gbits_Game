@@ -5,11 +5,16 @@ public class PlayerState_Run : PlayerState
 {
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float acceleration = 5f;
-
+    [SerializeField] public AudioClip StepClip;
+    
     public override void Enter()
     {
         base.Enter();
-
+        SoundEffectPlayer.AudioSource.clip = StepClip;
+        SoundEffectPlayer.AudioSource.pitch = 2f;
+        SoundEffectPlayer.AudioSource.volume = 0.5f;
+        SoundEffectPlayer.AudioSource.loop = true;
+        SoundEffectPlayer.AudioSource.Play();
         currentSpeed = player.MoveSpeedX;
     }
 
@@ -72,5 +77,10 @@ public class PlayerState_Run : PlayerState
         }
         
         
+    }
+
+    public override void Exit()
+    {
+        SoundEffectPlayer.AudioSource.Stop();
     }
 }

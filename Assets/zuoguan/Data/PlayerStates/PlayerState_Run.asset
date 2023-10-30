@@ -16,3 +16,4 @@ MonoBehaviour:
   transitionDuration: 0.1
   runSpeed: 4
   acceleration: 200
+  StepClip: {fileID: 8300000, guid: bc23f0213097981429639ebd85db34d4, type: 3}

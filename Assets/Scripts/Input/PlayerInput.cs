@@ -19,6 +19,8 @@ public class PlayerInput : MonoBehaviour
     public bool StopJump => playerInputActions.Gameplay.Skill.WasReleasedThisFrame();
     
     public bool Sprint => playerInputActions.Gameplay.Skill.WasPressedThisFrame();
+
+    public bool Skill => playerInputActions.Gameplay.Skill.IsPressed();
     
     public bool Release => playerInputActions.Gameplay.Release.WasPressedThisFrame();
     public bool Interaction => playerInputActions.Gameplay.Interaction.WasPressedThisFrame();
@@ -65,7 +67,7 @@ public class PlayerInput : MonoBehaviour
     public void EnableGameplayInputs()
     {
         playerInputActions.Gameplay.Enable();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
     
     public void DisableGameplayInputs()

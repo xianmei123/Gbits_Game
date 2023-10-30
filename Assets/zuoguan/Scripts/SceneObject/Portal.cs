@@ -7,6 +7,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
 
+    [SerializeField] public AudioClip teleplotAudio;
     [SerializeField] public Transform target;
     private PlayerController playerController;
     private bool canTeleport = false;
@@ -36,7 +37,12 @@ public class Portal : MonoBehaviour
         
         if (canTeleport && playerController != null && playerController.Interaction)
         {
-
+            SoundEffectPlayer.AudioSource.clip = teleplotAudio;
+            SoundEffectPlayer.AudioSource.pitch = 3;
+            SoundEffectPlayer.AudioSource.time = 1;
+            SoundEffectPlayer.AudioSource.volume = 0.5f;
+            SoundEffectPlayer.AudioSource.Play();
+            // SoundEffectPlayer.AudioSource.PlayOneShot(teleplotAudio);
             _animator.Play("teleport", 0, 0f);
             IsPlaying = true;
 

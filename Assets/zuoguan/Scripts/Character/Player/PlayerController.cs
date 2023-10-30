@@ -8,12 +8,12 @@ using Object = System.Object;
 
 public class PlayerController : MonoBehaviour
 {
-   
+
     [SerializeField] private float SprintCD = 5f;
     [SerializeField] private bool invincible = false;
-  
+
     [SerializeField] public List<Vector3> pos;
-    
+
     private float sprintTime = 0.0f;
 
     private PlayerGroundDetector groundDetector;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isAttacking = false;
     public bool Interaction => input.Interaction;
-    
+
     public AudioSource VoicePlayer { get; private set; }
 
     public bool CanAirJump { get; set; }
@@ -45,9 +45,9 @@ public class PlayerController : MonoBehaviour
 
     public bool CanClimb => ClimbDetector.CanClimb;
     // public bool IsGrounded => groundDetector.IsGrounded;
-    
+
     public bool IsGrounded = true;
-    
+
     public bool Grounded => groundDetector.IsGrounded;
     public bool IsFalling => rigidBody.velocity.y < 0f && !IsGrounded;
 
@@ -60,9 +60,10 @@ public class PlayerController : MonoBehaviour
     public bool InMovingPlatform = false;
 
     public Dictionary<string, bool> skills = new Dictionary<string, bool>();
-    
+
 
     public bool AttackSkill { get; set; }
+    public bool Laddering => input.Skill && skills["Climb_Ladder"];
 
     private int skillType = 0;
 
@@ -90,8 +91,8 @@ public class PlayerController : MonoBehaviour
     private float maxSlopeAngle = 70;
     private bool canWalkOnSlope;
     private Vector2 slopeNormalPerp;
-    
-    
+
+
     [SerializeField]
     private Transform groundCheck;
     [SerializeField]
@@ -126,15 +127,16 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        
+
         input.EnableGameplayInputs();
-        
-        
+
+
         InitialPos = transform.position;
     }
 
     private void Update()
     {
+        // Debug.Log(input.Skill + " " + skills["Climb_Ladder"]);
         // Debug.Log(type);
         if (sprintTime < SprintCD)
         {
@@ -144,14 +146,14 @@ public class PlayerController : MonoBehaviour
         {
             canSprint = true;
         }
-        
+
         // Debug.Log(HaveSkill("Sprint") + " " + HaveSkill("Climb") + " " + HaveSkill("Jump") + HaveSkill("Climb_Ladder"));
 
         if (input.Release)
         {
             ReleaseSkill();
         }
-        
+
         if (input.Interaction && skillType > 0)
         {
             canInteraction = true;
@@ -197,7 +199,7 @@ public class PlayerController : MonoBehaviour
     private void CheckGround()
     {
         IsGrounded = Physics2D.OverlapCircle(groundCheck.position + new Vector3(transform.localScale.x * 0.44f, 0f, 0), groundCheckRadius, GroundLayer);
-       
+
     }
 
     public void GetSkill(string skillName)
@@ -207,7 +209,7 @@ public class PlayerController : MonoBehaviour
             var item = skills.ElementAt(i);
             skills[item.Key] = false;
         }
-        
+
         skills[skillName] = true;
     }
 
@@ -216,12 +218,12 @@ public class PlayerController : MonoBehaviour
         canSprint = false;
         sprintTime = 0.0f;
     }
-    
+
 
     public void Move(float speed)
     {
-        
-        
+
+
         if (input.Move)
         {
             transform.localScale = new Vector3(input.AxisX, 1f, 1f);
@@ -239,7 +241,7 @@ public class PlayerController : MonoBehaviour
 
         // SetVelocityX(speed * input.AxisX);
     }
-    
+
     public void JumpMove(float speed)
     {
 
@@ -249,10 +251,10 @@ public class PlayerController : MonoBehaviour
         }
         SetVelocityX(speed * input.AxisX);
     }
-    
+
     public void MoveUpDown(float speed)
     {
-      
+
 
         SetVelocityY(speed * input.AxisY);
     }
@@ -341,7 +343,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+
+        Debug.Log(other.name);
 
         if (gameObject.layer == LayerMask.NameToLayer("Player"))
         {
@@ -351,22 +354,28 @@ public class PlayerController : MonoBehaviour
 
         if (other.transform.CompareTag("Interaction_Skill_Sprint"))
         {
-            
+
             skillType = 1;
         }
         else if (other.transform.CompareTag("Interaction_Skill_Climb"))
         {
-          
-            skillType = 2;
+
+            type = 5;
+            for (int i = 0; i < skills.Count; i++)
+            {
+                var item = skills.ElementAt(i);
+                skills[item.Key] = false;
+            }
+            // skillType = 2;
         }
         else if (other.transform.CompareTag("Interaction_Skill_Jump"))
         {
-           
+
             skillType = 3;
         }
         else if (other.transform.CompareTag("Interaction_Skill_ClimbLadder"))
         {
-           
+
             skillType = 4;
         }
 
@@ -374,15 +383,19 @@ public class PlayerController : MonoBehaviour
         {
             shouldDestoryTmp = true;
         }
-  
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform.tag.Contains("Interaction_Skill"))
         {
-            
+
             skillType = 0;
+        }
+        if (other.name.Equals("tmpSkill"))
+        {
+            shouldDestoryTmp = false;
         }
     }
 
@@ -405,12 +418,12 @@ public class PlayerController : MonoBehaviour
             skills[skillName] = false;
             GenerateSkill(skillName);
         }
-            
+
     }
 
     private void GenerateSkill(string skillName)
     {
-        GameObject obj = GameObject.Instantiate(Resources.Load<GameObject>("Skill"));
+        GameObject obj = GameObject.Instantiate(Resources.Load<GameObject>(skillName));
         obj.transform.position = transform.position;
         obj.name = "tmpSkill";
         if (tmpSkill != null)
@@ -419,7 +432,7 @@ public class PlayerController : MonoBehaviour
         if (skillName.Equals("Sprint"))
         {
             obj.tag = "Interaction_Skill_Sprint";
-            
+
         }
         else if (skillName.Equals("Climb"))
         {
@@ -440,17 +453,17 @@ public class PlayerController : MonoBehaviour
     {
         return skills[skillName];
     }
-    
+
     public void IsInLadder(float speed)
     {
-        
+
     }
 
     public void MoveInLadder(float speed)
     {
-        
+
     }
-    
+
     private void SlopeCheck()
     {
         Vector2 checkPos = transform.position - (Vector3)(new Vector2(0.0f, colliderSize.y / 2));
@@ -463,7 +476,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, transform.right, slopeCheckDistance, LadderLayer);
         RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, slopeCheckDistance, LadderLayer);
-        Debug.DrawLine(checkPos, (Vector3)checkPos +  (Vector3)transform.right * slopeCheckDistance, Color.blue);
+        //Debug.DrawLine(checkPos, (Vector3)checkPos + (Vector3)transform.right * slopeCheckDistance, Color.blue);
         if (slopeHitFront)
         {
             isOnSlope = true;
@@ -486,25 +499,25 @@ public class PlayerController : MonoBehaviour
     }
 
     private void SlopeCheckVertical(Vector2 checkPos)
-    {      
+    {
         RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, LadderLayer);
 
         if (hit)
         {
 
-            slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;            
+            slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;
 
             slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
 
-            if(slopeDownAngle != lastSlopeAngle)
+            if (slopeDownAngle != lastSlopeAngle)
             {
                 isOnSlope = true;
-            }                       
+            }
 
             lastSlopeAngle = slopeDownAngle;
-           
-            Debug.DrawRay(hit.point, slopeNormalPerp, Color.blue);
-            Debug.DrawRay(hit.point, hit.normal, Color.green);
+
+            //Debug.DrawRay(hit.point, slopeNormalPerp, Color.blue);
+            //Debug.DrawRay(hit.point, hit.normal, Color.green);
 
         }
 
@@ -527,19 +540,19 @@ public class PlayerController : MonoBehaviour
             rigidBody.sharedMaterial = noFriction;
             playerCollider.sharedMaterial = noFriction;
         }
-        
+
         // Debug.Log("v:" + slopeDownAngle + isOnSlope);
     }
-    
+
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(groundCheck.position + new Vector3(transform.localScale.x * 0.44f, 0f, 0), groundCheckRadius);
+        //Gizmos.DrawWireSphere(groundCheck.position + new Vector3(transform.localScale.x * 0.44f, 0f, 0), groundCheckRadius);
     }
 
     public void setTransform(Transform target)
     {
         transform.position = target.position;
     }
-    
-    
+
+
 }

@@ -3,10 +3,17 @@ using UnityEngine;
 public class PlayerState_Absorb : PlayerState
 {
 
+    [SerializeField] public AudioClip AbsorbClip;
   
     public override void Enter()
     {
         base.Enter();
+        SoundEffectPlayer.AudioSource.clip = AbsorbClip;
+        SoundEffectPlayer.AudioSource.pitch = 3;
+        SoundEffectPlayer.AudioSource.time = 2;
+        SoundEffectPlayer.AudioSource.volume = 0.5f;
+        SoundEffectPlayer.AudioSource.Play();
+        // SoundEffectPlayer.AudioSource.PlayOneShot(AbsorbClip);
         player.SetVelocity(new Vector3(0.0f, 0.0f, 0.0f));
 
         player.canInteraction = false;
